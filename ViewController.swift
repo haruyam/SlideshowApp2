@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var startstop: UIButton!
     @IBOutlet var tapbutton: UITapGestureRecognizer!
     
     @IBAction func tapView(_ sender: Any) {
@@ -29,9 +30,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let _: UIStoryboard = self.storyboard!
-
-        
-        // myLabel自体のタップを検知するようにする
+       
        imageView.isUserInteractionEnabled = true
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -73,13 +72,15 @@ class ViewController: UIViewController {
             nextbutton.isEnabled = true
             backbutton.isEnabled = true
             tapbutton.isEnabled = true
+             startstop.setTitle("停止", for: .normal)
+            
         }
        else { timer = Timer.scheduledTimer(timeInterval:2.0, target: self, selector: #selector (ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
         
         nextbutton.isEnabled = false
          backbutton.isEnabled = false
             tapbutton.isEnabled = false
-            
+            startstop.setTitle("再生", for: .normal)
         }
     }
     
