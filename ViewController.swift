@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var startstop: UIButton!
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var backbutton: UIButton!
     var timer: Timer?
-
+    
     let imageNameList = ["君の名は.jpg", "青空.jpg", "未来への道.jpg"]
     var index = 0
     
@@ -30,20 +30,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let _: UIStoryboard = self.storyboard!
-       
-       imageView.isUserInteractionEnabled = true
+        
+        imageView.isUserInteractionEnabled = true
         
         // Do any additional setup after loading the view, typically from a nib.
-     imageView.image = UIImage(named: "君の名は.jpg")
+        imageView.image = UIImage(named: "君の名は.jpg")
         
-              }
-
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     @IBAction func next(_ sender: Any) {
         index += 1
         if index > imageNameList.count - 1 {
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         let imageName = imageNameList[index]
         imageView.image = UIImage(named: imageName)
         
-          }
+    }
     
     @IBAction func back(_ sender: Any) {
         index -= 1
@@ -72,13 +72,13 @@ class ViewController: UIViewController {
             nextbutton.isEnabled = true
             backbutton.isEnabled = true
             tapbutton.isEnabled = true
-             startstop.setTitle("再生", for: .normal)
+            startstop.setTitle("再生", for: .normal)
             
         }
-       else { timer = Timer.scheduledTimer(timeInterval:2.0, target: self, selector: #selector (ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
-        
-        nextbutton.isEnabled = false
-         backbutton.isEnabled = false
+        else { timer = Timer.scheduledTimer(timeInterval:2.0, target: self, selector: #selector (ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+            
+            nextbutton.isEnabled = false
+            backbutton.isEnabled = false
             tapbutton.isEnabled = false
             startstop.setTitle("停止", for: .normal)
         }
@@ -88,12 +88,12 @@ class ViewController: UIViewController {
     func displayImage() {
         
         // 画像の名前の配列
-       
+        
         // 画像の番号が正常な範囲を指しているかチェック
         
         // 範囲より下を指している場合、最後の画像を表示
         if index < 0 {
-             index = 2
+            index = 2
         }
         
         // 範囲より上を指している場合、最初の画像を表示
@@ -111,7 +111,7 @@ class ViewController: UIViewController {
         imageView.image = image
     }
     
-   
+    
     
     /// NSTimerによって、一定の間隔で呼び出される関数
     @objc func onTimer(timer: Timer) {
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
         // segueから遷移先のResultViewControllerを取得する
         let resultViewController:ResultViewController = segue.destination as! ResultViewController
         // 遷移先のResultViewControllerで宣言しているx, yに値を代入して渡す
-       resultViewController.imageName = imageNameList[index]
+        resultViewController.imageName = imageNameList[index]
         
     }
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
