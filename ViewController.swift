@@ -72,7 +72,7 @@ class ViewController: UIViewController {
             nextbutton.isEnabled = true
             backbutton.isEnabled = true
             tapbutton.isEnabled = true
-             startstop.setTitle("停止", for: .normal)
+             startstop.setTitle("再生", for: .normal)
             
         }
        else { timer = Timer.scheduledTimer(timeInterval:2.0, target: self, selector: #selector (ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         nextbutton.isEnabled = false
          backbutton.isEnabled = false
             tapbutton.isEnabled = false
-            startstop.setTitle("再生", for: .normal)
+            startstop.setTitle("停止", for: .normal)
         }
     }
     
